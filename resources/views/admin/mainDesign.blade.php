@@ -127,9 +127,8 @@
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                             class="icon-windows"></i>Example dropdown </a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
+                        <li><a href="{{ route('admin.addfood') }}">Add Food</a></li>
+                        <li><a href="#">View Food</a></li>
                     </ul>
                 </li>
             </ul><span class="heading">Extras</span>
@@ -147,6 +146,7 @@
                 </div>
             </div>
             @yield('admin-dashboard')
+            @yield('add-food')
             <footer class="footer">
                 <div class="footer__block block no-margin-bottom">
                     <div class="container-fluid text-center">

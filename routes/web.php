@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index']);
@@ -11,7 +11,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'home'])
+        ->name('dashboard');
 });
 
-Route::get('/adminfile', [UserController::class, 'goFile'])->middleware('auth', 'admin');
+Route::get('/addfood', [AdminController::class, 'addFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.addfood');
+
+Route::post('/addfood', [AdminController::class, 'createFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.createfood');
