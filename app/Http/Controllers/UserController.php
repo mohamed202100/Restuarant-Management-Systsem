@@ -12,6 +12,11 @@ class UserController extends Controller
         return view('home');
     }
 
+    public function goFile()
+    {
+        return view('admin.adminFile');
+    }
+
     public function home()
     {
         if (Auth::id() && Auth::user()->user_type == 'admin') {
