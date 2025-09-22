@@ -22,3 +22,7 @@ Route::get('/addfood', [AdminController::class, 'addFood'])
 Route::post('/addfood', [AdminController::class, 'createFood'])
     ->middleware('auth', 'admin')
     ->name('admin.createfood');
+
+Route::get('/showfood', [AdminController::class, 'showFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.showfood');

@@ -37,4 +37,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Added Successfully!');
     }
+
+    public function showFood()
+    {
+        $foods = Food::all();
+
+        return view('admin.showFood', compact('foods'));
+    }
 }
