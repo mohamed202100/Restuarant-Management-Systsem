@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index']);
 
+Route::post('/addtocart', [UserController::class, 'addToCart'])->name('addtocart')->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -13,6 +15,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'home'])
         ->name('dashboard');
+    Route::post('/addtocart', [UserController::class, 'addToCart'])
+        ->name('addtocart');
 });
 
 Route::get('/addfood', [AdminController::class, 'addFood'])
