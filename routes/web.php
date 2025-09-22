@@ -26,3 +26,15 @@ Route::post('/addfood', [AdminController::class, 'createFood'])
 Route::get('/showfood', [AdminController::class, 'showFood'])
     ->middleware('auth', 'admin')
     ->name('admin.showfood');
+
+Route::get('/deletefood/{id}', [AdminController::class, 'deleteFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.deletefood');
+
+Route::get('/updatefood/{id}', [AdminController::class, 'updateFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.updatefood');
+
+Route::post('/updatefood/{id}', [AdminController::class, 'postUpdateFood'])
+    ->middleware('auth', 'admin')
+    ->name('admin.postupdatefood');
