@@ -58,6 +58,9 @@
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('food.cart') }}">Cart</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}">dashboard</a>
                         </li>
                     @else
@@ -72,6 +75,11 @@
             </ul>
         </div>
     </nav>
+
+    <div style="margin-top:100px" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+        @yield('show-cart')
+    </div>
+
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">

@@ -37,6 +37,20 @@ class UserController extends Controller
         }
     }
 
+    public function foodCart()
+    {
+        $current_auth = Auth::id();
+        $cart_food_info = FoodCart::where('userID', '=', $current_auth)->get();
+        return view('showCart', compact('cart_food_info'));
+    }
+
+    public function removeCart($id)
+    {
+        $remove_food = FoodCart::findOrFail($id);
+        $remove_food->delete();
+        return redirect()->back()->with('danger', 'Removed Successfully');
+    }
+
     public function goFile()
     {
         return view('admin.adminFile');

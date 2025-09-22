@@ -17,6 +17,10 @@ Route::middleware([
         ->name('dashboard');
     Route::post('/addtocart', [UserController::class, 'addToCart'])
         ->name('addtocart');
+    Route::get('/foodcart', [UserController::class, 'foodCart'])
+        ->name('food.cart');
+    Route::get('/foodcart/{id}', [UserController::class, 'removeCart'])
+        ->name('delete.cart');
 });
 
 Route::get('/addfood', [AdminController::class, 'addFood'])

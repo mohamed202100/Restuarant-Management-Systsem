@@ -3,7 +3,7 @@
 @section('show-food')
     <table style="border-collapse:collapse; width:100%; font-family: Arial, sans-serif; margin: 10px 0">
         @if (session('danger'))
-            <div class="background-color: rgb(240,16,0); color:white; text-align:center;">
+            <div style="background-color: red; color:white; text-align:center;">
                 {{ session('danger') }}
             </div>
         @endif
