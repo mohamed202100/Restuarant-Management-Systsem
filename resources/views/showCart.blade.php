@@ -8,6 +8,12 @@
             </div>
         @endif
 
+        @if (session('success'))
+            <div style="background-color: rgb(106, 223, 28); text-align:center;">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <thead>
             <tr style="background-color: #f2f2f2">
                 <th style="border:1px solid #ddd; padding:12px; ">Food Name</th>
@@ -43,4 +49,12 @@
         </tbody>
     </table>
     <h1>Total Price is : ${{ $total_price }}</h1>
+
+    <div>
+        <form action="{{ route('cart.confirm') }}" method="post">
+            @csrf
+            <input type="submit" style="background-color: lightgreen;color:black ; border-aadius:11px; padding:10px"
+                value="confirm_order">
+        </form>
+    </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -82,5 +83,11 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->with('update', 'Updated Successfully!');
+    }
+
+    public function viewOrders()
+    {
+        $orders = Order::all();
+        return view('admin.viewOrders', compact('orders'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use App\Models\FoodCart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,8 +40,8 @@ class UserController extends Controller
 
     public function foodCart()
     {
-        $current_auth = Auth::id();
-        $cart_food_info = FoodCart::where('userID', '=', $current_auth)->get();
+        $current_user = Auth::id();
+        $cart_food_info = FoodCart::where('userID', '=', $current_user)->get();
         return view('showCart', compact('cart_food_info'));
     }
 
@@ -49,6 +50,27 @@ class UserController extends Controller
         $remove_food = FoodCart::findOrFail($id);
         $remove_food->delete();
         return redirect()->back()->with('danger', 'Removed Successfully');
+    }
+
+    public function ConfirmOrder(Request $request)
+    {
+        $current_user = Auth::id();
+
+        $cart_food = FoodCart::where('userID', '=', $current_user)->get();
+
+        foreach ($cart_food as $cart_food) {
+            $single_order = new Order();
+            $single_order->customer_name = Auth::user()->name;
+            $single_order->customer_email = Auth::user()->email;
+            $single_order->customer_address = Auth::user()->address;
+            $single_order->customer_phone = Auth::user()->phone;
+            $single_order->food_name = $cart_food->food_name;
+            $single_order->food_image = $cart_food->food_image;
+            $single_order->food_quantity = $cart_food->food_quantity;
+            $single_order->food_price = $cart_food->food_price;
+            $single_order->save();
+        }
+        return redirect()->back()->with('success', 'Order Added Successfully');
     }
 
     public function goFile()

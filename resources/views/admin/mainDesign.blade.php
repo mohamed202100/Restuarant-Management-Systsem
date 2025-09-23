@@ -129,6 +129,7 @@
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="{{ route('admin.addfood') }}">Add Food</a></li>
                         <li><a href="{{ route('admin.showfood') }}">View Food</a></li>
+                        <li><a href="{{ route('admin.vieworders') }}">View Orders</a></li>
                     </ul>
                 </li>
             </ul><span class="heading">Extras</span>
@@ -153,6 +154,9 @@
             @yield('show-food')
 
             @yield('update-food')
+
+            @yield('show-orders')
+
 
             <footer class="footer">
                 <div class="footer__block block no-margin-bottom">

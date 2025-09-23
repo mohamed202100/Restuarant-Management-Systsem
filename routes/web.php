@@ -15,12 +15,18 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'home'])
         ->name('dashboard');
+
     Route::post('/addtocart', [UserController::class, 'addToCart'])
         ->name('addtocart');
+
     Route::get('/foodcart', [UserController::class, 'foodCart'])
         ->name('food.cart');
+
     Route::get('/foodcart/{id}', [UserController::class, 'removeCart'])
         ->name('delete.cart');
+
+    Route::post('/confirmorder', [UserController::class, 'ConfirmOrder'])
+        ->name('cart.confirm');
 });
 
 Route::get('/addfood', [AdminController::class, 'addFood'])
@@ -46,3 +52,7 @@ Route::get('/updatefood/{id}', [AdminController::class, 'updateFood'])
 Route::post('/updatefood/{id}', [AdminController::class, 'postUpdateFood'])
     ->middleware('auth', 'admin')
     ->name('admin.postupdatefood');
+
+Route::get('/vieworder', [AdminController::class, 'viewOrders'])
+    ->middleware('auth', 'admin')
+    ->name('admin.vieworders');
