@@ -56,3 +56,11 @@ Route::post('/updatefood/{id}', [AdminController::class, 'postUpdateFood'])
 Route::get('/vieworder', [AdminController::class, 'viewOrders'])
     ->middleware('auth', 'admin')
     ->name('admin.vieworders');
+
+Route::get('/delivered/{id}', [AdminController::class, 'foodStatusDelivered'])
+    ->middleware('auth', 'admin')
+    ->name('admin.delivered');
+
+Route::get('/cancel/{id}', [AdminController::class, 'foodStatusCancel'])
+    ->middleware('auth', 'admin')
+    ->name('admin.cancel');

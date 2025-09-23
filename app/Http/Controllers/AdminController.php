@@ -90,4 +90,20 @@ class AdminController extends Controller
         $orders = Order::all();
         return view('admin.viewOrders', compact('orders'));
     }
+
+    public function foodStatusDelivered($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->order_status = "Delivered";
+        $order->save();f
+        return redirect()->back();
+    }
+
+    public function foodStatusCancel($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->order_status = "Cancel";
+        $order->save();
+        return redirect()->back();
+    }
 }
