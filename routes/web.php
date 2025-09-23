@@ -30,6 +30,9 @@ Route::middleware([
 
     Route::post('/confirmorder', [UserController::class, 'ConfirmOrder'])
         ->name('cart.confirm');
+
+    Route::get('/orderstatus', [UserController::class, 'orderStatus'])
+        ->name('order_status');
 });
 
 Route::get('/addfood', [AdminController::class, 'addFood'])
@@ -67,3 +70,7 @@ Route::get('/delivered/{id}', [AdminController::class, 'foodStatusDelivered'])
 Route::get('/cancel/{id}', [AdminController::class, 'foodStatusCancel'])
     ->middleware('auth', 'admin')
     ->name('admin.cancel');
+
+Route::get('/viewbooked_table', [AdminController::class, 'viewBookedTable'])
+    ->middleware('auth', 'admin')
+    ->name('admin.viewbookedtable');

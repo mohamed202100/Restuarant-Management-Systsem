@@ -36,10 +36,10 @@
                     <td style="border:1px solid #ddd; padding:8px; text-align:left;">{{ $order->food_price }}</td>
                     <td style="border:1px solid #ddd; padding:8px; text-align:left;">{{ $order->order_status }}</td>
                     <td style="border:1px solid #ddd; padding:8px;">
-                        <a href="{{ route('admin.delivered', $oder->id) }}"
+                        <a href="{{ route('admin.delivered', $order->id) }}"
                             style="color:#2196F3; text-decoration:none; padding: 4px 8px; border-radius: 4px;
                         background-color:#e7f3ff">Delivered</a>
-                        <a href="{{ route('admin.cancel', $oder->id) }}"
+                        <a href="{{ route('admin.cancel', $order->id) }}"
                             style="color:#f44336; text-decoration:none; padding: 4px 8px; border-radius: 4px;
                         background-color:#ffebee">Cancel</a>
                     </td>

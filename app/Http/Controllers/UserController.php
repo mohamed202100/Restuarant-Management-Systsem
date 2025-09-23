@@ -61,6 +61,7 @@ class UserController extends Controller
 
         foreach ($cart_food as $cart_food) {
             $single_order = new Order();
+            $single_order->customer_id = Auth::user()->id;
             $single_order->customer_name = Auth::user()->name;
             $single_order->customer_email = Auth::user()->email;
             $single_order->customer_address = Auth::user()->address;
@@ -97,5 +98,12 @@ class UserController extends Controller
         $book->date = $request->date;
         $book->save();
         return redirect()->back()->with('booktable', 'Book Table Request Sent');
+    }
+
+    public function orderStatus()
+    {
+        $current_auth = Auth::id();
+        $my_order = Order::where('customer_id', '=', $current_auth)->get();
+        return view('orderStatus', compact('my_order'));
     }
 }

@@ -130,6 +130,7 @@
                         <li><a href="{{ route('admin.addfood') }}">Add Food</a></li>
                         <li><a href="{{ route('admin.showfood') }}">View Food</a></li>
                         <li><a href="{{ route('admin.vieworders') }}">View Orders</a></li>
+                        <li><a href="{{ route('admin.viewbookedtable') }}">View Booked Tables</a></li>
                     </ul>
                 </li>
             </ul><span class="heading">Extras</span>
@@ -156,6 +157,8 @@
             @yield('update-food')
 
             @yield('show-orders')
+
+            @yield('show-bookedtables')
 
 
             <footer class="footer">

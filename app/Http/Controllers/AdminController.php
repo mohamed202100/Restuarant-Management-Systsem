@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookTable;
 use App\Models\Food;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -105,5 +106,11 @@ class AdminController extends Controller
         $order->order_status = "Cancel";
         $order->save();
         return redirect()->back();
+    }
+
+    public function viewBookedTable()
+    {
+        $booked_tables = BookTable::all();
+        return view('admin.viewBookedTables', compact('booked_tables'));
     }
 }
