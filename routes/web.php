@@ -8,6 +8,9 @@ Route::get('/', [UserController::class, 'index']);
 
 Route::post('/addtocart', [UserController::class, 'addToCart'])->name('addtocart')->middleware('auth');
 
+Route::post('/findatable', [UserController::class, 'findATable'])
+    ->name('book.table');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

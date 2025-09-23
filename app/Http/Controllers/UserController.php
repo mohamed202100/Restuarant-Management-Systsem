@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookTable;
 use App\Models\Food;
 use App\Models\FoodCart;
 use App\Models\Order;
@@ -85,5 +86,16 @@ class UserController extends Controller
         } elseif (Auth::id() && Auth::user()->user_type == 'user') {
             return view('dashboard');
         }
+    }
+
+    public function findATable(Request $request)
+    {
+        $book = new BookTable();
+        $book->email = $request->email;
+        $book->number_of_guest = $request->number_of_guest;
+        $book->time = $request->time;
+        $book->date = $request->date;
+        $book->save();
+        return redirect()->back()->with('booktable', 'Book Table Request Sent');
     }
 }

@@ -19,6 +19,12 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
+    @if (session('booktable'))
+        <div style="background-color: rgb(106, 223, 28); text-align:center;">
+            {{ session('booktable') }}
+        </div>
+    @endif
+
     <!-- Navbar -->
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -107,25 +113,32 @@
     <div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
         <div class="">
             <h2 class="section-title mb-5">BOOK A TABLE</h2>
-            <div class="row mb-5">
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="email" id="booktable" class="form-control form-control-lg custom-form-control"
-                        placeholder="EMAIL">
+            <form action="{{ route('book.table') }}" method="post">
+                @csrf
+                <div class="row mb-5">
+                    <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                        <input type="email" name="email" id="booktable"
+                            class="form-control form-control-lg custom-form-control" placeholder="EMAIL" required>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                        <input type="number" name="number_of_guest" id="booktable"
+                            class="form-control form-control-lg custom-form-control" placeholder="NUMBER OF GUESTS"
+                            required max="20" min="1">
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                        <input type="time" name="time" id="booktable"
+                            class="form-control form-control-lg custom-form-control" required>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                        <input type="date" name="date" id="booktable"
+                            class="form-control form-control-lg custom-form-control" placeholder="12/12/12" required>
+                    </div>
                 </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="number" id="booktable" class="form-control form-control-lg custom-form-control"
-                        placeholder="NUMBER OF GUESTS" max="20" min="0">
+                <div>
+                    <input type="submit" name="submit" class="btn btn-lg btn-primary" id="rounded-btn"
+                        value="FIND TABLE">
                 </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="time" id="booktable" class="form-control form-control-lg custom-form-control"
-                        placeholder="EMAIL">
-                </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control"
-                        placeholder="12/12/12">
-                </div>
-            </div>
-            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
+            </form>
         </div>
     </div>
 
